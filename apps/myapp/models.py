@@ -53,10 +53,20 @@ class TripManager(models.Manager):
 			errors['title'] = "Destination cannot be blank."
 		if not postData['description']:
 			errors['description'] = "Description cannot be blank."
+		
 		if not postData['startdate']:
 			errors['startdate'] = "Start date cannot be blank."
+		elif postData['startdate'] < str(datetime.now()):
+			errors['startdate'] = "Star Date cannot be a past date."
+
 		if not postData['enddate']:
 			errors['enddate'] = "End date cannot be blank."
+		elif postData['enddate'] < str(datetime.now()):
+			errors['enddate'] = "End date cannot be a past date."
+
+		if postData['startdate'] > postData['enddate']:
+			errors['startdate'] = "Star Date cannot be after end date."
+			
 		return errors
 
 class User(models.Model):
