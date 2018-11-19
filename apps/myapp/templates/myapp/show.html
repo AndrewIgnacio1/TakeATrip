@@ -1,0 +1,69 @@
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style type="text/css">
+	* {
+		margin: 0 auto;
+		padding: 0;
+	}
+	#container {
+		margin: 20px auto;
+		padding: 20px;
+	}
+	.boxes{
+		width: calc(50% - 20px);
+		border: 1px solid black;
+		display: inline-block;
+		vertical-align: top;
+		padding: 10px;
+	}
+	#header{
+		width: 100%;
+	}
+	.wbord{
+		border: 1px solid black;
+		width: 50%;
+	}
+	.btn{
+		display: inline-block;
+	}
+	h4{
+		margin: 20px 0 0 0;
+	}
+</style>
+<title>{{ trip.destination }}</title>
+</head>
+<body>
+	<div id="container">
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Trips</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/dash">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/new">Add Travel Plan</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/clear">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		</br>
+		<h1>Title: {{ trip.destination }}</h1>
+		<p>Planned By: {{ trip.uploader.name }}</p>
+		<p>Description: {{ trip.destination }}</p>
+		<p>Trave Date From: {{ trip.startdate }}</p>
+		<p>Travel Date To: {{ trip.enddate }}</p>
+		</br>
+		<h3>Other users' joining this trip:</h3>
+		{%for user in others%}
+			<p>{{ user.name }}</p>
+		{% endfor %}
+	</div>
+</body>
